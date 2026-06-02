@@ -8,8 +8,9 @@ group = "org.example"
 version = "0.0.1-SNAPSHOT"
 
 java {
-    sourceCompatibility = JavaVersion.VERSION_21
-    targetCompatibility = JavaVersion.VERSION_21
+    toolchain {
+        languageVersion.set(JavaLanguageVersion.of(21))
+    }
 }
 
 repositories {
@@ -19,7 +20,11 @@ repositories {
 dependencies {
     implementation("org.springframework.boot:spring-boot-starter-web")
 
-    testImplementation("com.github.tomakehurst:wiremock-jre8:2.35.0")
+    testImplementation("org.springframework.boot:spring-boot-starter-test")
+
+    testImplementation("org.wiremock:wiremock-standalone:3.9.1")
+
+    //testImplementation("org.skyscreamer:jsonassert:1.5.3")
 }
 
 tasks.test {
